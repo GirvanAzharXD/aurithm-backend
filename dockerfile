@@ -11,9 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Salin semua sisa kode aplikasi Anda
 COPY . .
 
-# Buka port yang akan digunakan oleh aplikasi
-EXPOSE 7860 
-
-# Perintah untuk menjalankan aplikasi menggunakan Gunicorn
-# Server production yang direkomendasikan untuk Flask
-CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--workers", "1", "app:app"]
+# Perintah untuk menjalankan aplikasi
+# Fly.io akan secara otomatis mendeteksi port internal 8080
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "app:app"]
